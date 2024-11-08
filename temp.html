@@ -1,0 +1,139 @@
+<div class="booking-section">
+    <div class="sign-in-card">
+        <p>Members get our best prices when signed in!</p>
+        <button class="sign-in-btn">Sign in</button>
+    </div>
+
+    <div class="booking-card">
+        <div class="price-section">
+            <span class="price">$134</span>
+            <span class="per-night">per night</span>
+        </div>
+
+        <div class="cancellation">
+            <span>Free cancellation</span>
+            <span class="cancellation-info">Before Mon, Nov 4</span>
+        </div>
+
+        <div class="available-dates">
+            <svg viewBox="0 0 16 16" width="16" height="16">
+                <circle cx="8" cy="8" r="8" fill="#2e8b57"/>
+                <path d="M4 8l3 3l5-5" stroke="white" fill="none" stroke-width="2"/>
+            </svg>
+            <span>Your dates are available</span>
+        </div>
+
+        <div class="date-picker">
+            <div class="date-input">
+                <div class="date-label">Start date</div>
+                <div class="date-value">Nov 18</div>
+            </div>
+            <div class="date-input">
+                <div class="date-label">End date</div>
+                <div class="date-value">Nov 20</div>
+            </div>
+        </div>
+
+        <div class="travelers-input">
+            <div class="travelers-label">Travelers</div>
+            <div class="travelers-value">2 travelers</div>
+        </div>
+
+        <div class="total-section">
+            <span>Total</span>
+            <span class="total-price">$543</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+            <span class="tax-info">Total includes fees, not tax</span>
+            <a href="#" class="price-details">Price details</a>
+        </div>
+
+        <button class="book-button">Book now</button>
+        <div class="no-charge">You will not be charged yet</div>
+        <a href="#" class="contact-host">Contact host</a>
+        <div class="property-id">Property # 9838104ha</div>
+    </div>
+</div>
+
+
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    background-color: #f5f5f5;
+    padding: 1rem;
+} */
+
+
+// booking section previos code css ///
+
+
+.booking-section {
+    width: 380px;
+}
+
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+
+
+
+
+.member-card {
+    background: #1a1b2f;
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.member-icon {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+}
+
+.member-text {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.sign-in-btn {
+    background: #4169e1;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Rest of your existing styles remain the same */
+/* ... (keep all the other styles from both previous codes) ... */
+
+@media (max-width: 968px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-section {
+        position: static;
+    }
+}

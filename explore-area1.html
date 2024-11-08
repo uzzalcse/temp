@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .explore-section {
+            padding: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .explore-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #222;
+        }
+
+        .explore-content {
+            display: flex;
+            gap: 24px;
+        }
+
+        .map-container {
+            flex: 0 0 180px;
+        }
+
+        .map-image {
+            width: 100%;
+            height: 120px;
+            border-radius: 12px;
+            background-color: #e3f2f6;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .map-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #006aff;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 4px rgba(0,106,255,0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0,106,255,0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0,106,255,0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0,106,255,0);
+            }
+        }
+
+        .map-roads {
+            stroke: #fff;
+            stroke-width: 1;
+            fill: none;
+        }
+
+        .map-location {
+            font-size: 14px;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .map-link {
+            font-size: 14px;
+            color: #222;
+            text-decoration: underline;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .location-list {
+            flex: 1;
+        }
+
+        .location-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .location-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .location-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #222;
+        }
+
+        .location-icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-distance {
+            font-size: 14px;
+            color: #717171;
+        }
+
+        .see-more {
+            color: #006aff;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-top: 16px;
+        }
+
+        .see-more:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <section class="explore-section">
+        <h2 class="explore-title">Explore the area</h2>
+        <div class="explore-content">
+            <div class="map-container">
+                <div class="map-image">
+                    <svg class="map-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <!-- Background -->
+                        <rect width="100" height="100" fill="#e3f2f6"/>
+                        
+                        <!-- Stylized map elements -->
+                        <path class="map-roads" d="M20,50 C20,20 80,80 80,50" />
+                        <path class="map-roads" d="M10,30 C40,30 60,70 90,70" />
+                        <path class="map-roads" d="M40,10 C40,40 60,60 60,90" />
+                        
+                        <!-- Water bodies -->
+                        <path d="M0,0 C30,20 70,20 100,0" fill="#c2e7f2" />
+                        <path d="M80,100 C70,80 90,80 100,100" fill="#c2e7f2" />
+                    </svg>
+                    <div class="map-point"></div>
+                </div>
+                <div class="map-location">Juneau, Alaska</div>
+                <a href="#" class="map-link">View in a map</a>
+            </div>
+            <div class="location-list">
+                <div class="location-item">
+                    <span class="location-name">
+                        <span class="location-icon">📍</span>
+                        Auke Bay
+                    </span>
+                    <span class="location-distance">6 min drive</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-name">
+                        <span class="location-icon">📍</span>
+                        University of Alaska–Southeast
+                    </span>
+                    <span class="location-distance">10 min drive</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-name">
+                        <span class="location-icon">📍</span>
+                        Mendenhall Golf Course
+                    </span>
+                    <span class="location-distance">14 min drive</span>
+                </div>
+                <div class="location-item">
+                    <span class="location-name">
+                        <span class="location-icon">✈️</span>
+                        Juneau, AK (JNU-Juneau Intl.)
+                    </span>
+                    <span class="location-distance">14 min drive</span>
+                </div>
+                <a href="#" class="see-more">See more about this area ›</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            padding: 1rem;
+        }
+
+        .booking-card {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 12px;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .member-banner {
+            background-color: #1a1f36;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sign-in-btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .booking-content {
+            padding: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .per-night {
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .cancellation {
+            color: #10b981;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cancellation-date {
+            color: #666;
+            font-size: 0.875rem;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .availability {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #10b981;
+            font-size: 0.875rem;
+            margin: 1rem 0;
+        }
+
+        .date-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .date-input {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+
+        .date-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+
+        .travelers-input {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        .total-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-price {
+            font-weight: bold;
+        }
+
+        .price-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-details a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .book-now-btn {
+            width: 100%;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+        }
+
+        .no-charge {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .contact-host {
+            display: block;
+            text-align: center;
+            color: #3b82f6;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .property-id {
+            text-align: right;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .checkmark {
+            width: 16px;
+            height: 16px;
+            fill: #10b981;
+        }
+
+        /* Travelers Popup Styles */
+        .travelers-popup {
+            display: none;
+            position: absolute;
+            top: 301px;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin: 0.5rem;
+            z-index: 1000;
+        }
+
+        .travelers-popup.active {
+            display: block;
+        }
+
+        .traveler-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .traveler-type {
+            font-weight: 500;
+        }
+
+        .counter-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .counter-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            cursor: pointer;
+            font-size: 1.25rem;
+            color: #666;
+        }
+
+        .counter-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .counter-value {
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .pets-checkbox {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pets-checkbox input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .done-btn {
+            width: 100%;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-card">
+        <div class="member-banner">
+            <span>Members get our best prices when signed in!</span>
+            <button class="sign-in-btn">Sign in</button>
+        </div>
+        
+        <div class="booking-content">
+            <div class="price">
+                $134 <span class="per-night">per night</span>
+            </div>
+
+            <div class="cancellation">
+                Free cancellation
+                <span class="cancellation-date">Before Mon, Nov 4</span>
+            </div>
+
+            <div class="availability">
+                <svg class="checkmark" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" fill="currentColor"/>
+                    <path d="M4 8l3 3l5-5" stroke="white" fill="none" stroke-width="2"/>
+                </svg>
+                Your dates are available
+            </div>
+
+            <div class="date-inputs">
+                <div class="date-input">
+                    <div class="date-label">Start date</div>
+                    <div>Nov 18</div>
+                </div>
+                <div class="date-input">
+                    <div class="date-label">End date</div>
+                    <div>Nov 20</div>
+                </div>
+            </div>
+
+            <div class="travelers-input" id="travelersInput">
+                <div class="date-label">Travelers</div>
+                <div id="travelersDisplay">2 travelers</div>
+            </div>
+
+            <div class="travelers-popup" id="travelersPopup">
+                <div class="traveler-row">
+                    <div class="traveler-type">Adults</div>
+                    <div class="counter-controls">
+                        <button class="counter-btn" onclick="updateCount('adults', -1)" id="adultsDecrement">-</button>
+                        <span class="counter-value" id="adultsCount">2</span>
+                        <button class="counter-btn" onclick="updateCount('adults', 1)" id="adultsIncrement">+</button>
+                    </div>
+                </div>
+                <div class="traveler-row">
+                    <div class="traveler-type">Children</div>
+                    <div class="counter-controls">
+                        <button class="counter-btn" onclick="updateCount('children', -1)" id="childrenDecrement">-</button>
+                        <span class="counter-value" id="childrenCount">0</span>
+                        <button class="counter-btn" onclick="updateCount('children', 1)" id="childrenIncrement">+</button>
+                    </div>
+                </div>
+                <div class="pets-checkbox">
+                    <input type="checkbox" id="petsCheckbox">
+                    <label for="petsCheckbox">I am travelling with pets</label>
+                </div>
+                <button class="done-btn" onclick="closeTravelersPopup()">Done</button>
+            </div>
+
+            <div class="total-section">
+                <span>Total</span>
+                <span class="total-price">$543</span>
+            </div>
+
+            <div class="price-details">
+                <span>Total includes fees, not tax</span>
+                <a href="#">Price details</a>
+            </div>
+
+            <button class="book-now-btn">Book now</button>
+            <div class="no-charge">You will not be charged yet</div>
+            <a href="#" class="contact-host">Contact host</a>
+            <div class="property-id">Property #9838104ha</div>
+        </div>
+    </div>
+
+    <script>
+        const travelersInput = document.getElementById('travelersInput');
+        const travelersPopup = document.getElementById('travelersPopup');
+        const travelersDisplay = document.getElementById('travelersDisplay');
+        
+        let counts = {
+            adults: 2,
+            children: 0
+        };
+
+        travelersInput.addEventListener('click', (event) => {
+            event.stopPropagation();
+            travelersPopup.classList.toggle('active');
+        });
+
+        function updateCount(type, change) {
+            const newCount = counts[type] + change;
+            
+            if (type === 'adults') {
+                if (newCount >= 1 && newCount <= 10) {
+                    counts.adults = newCount;
+                    document.getElementById('adultsCount').textContent = newCount;
+                    document.getElementById('adultsDecrement').disabled = newCount <= 1;
+                    document.getElementById('adultsIncrement').disabled = newCount >= 10;
+                }
+            } else {
+                if (newCount >= 0 && newCount <= 10) {
+                    counts.children = newCount;
+                    document.getElementById('childrenCount').textContent = newCount;
+                    document.getElementById('childrenDecrement').disabled = newCount <= 0;
+                    document.getElementById('childrenIncrement').disabled = newCount >= 10;
+                }
+            }
+            
+            updateTravelersDisplay();
+        }
+
+        function updateTravelersDisplay() {
+            const total = counts.adults + counts.children;
+            travelersDisplay.textContent = `${total} traveler${total !== 1 ? 's' : ''}`;
+        }
+
+        function closeTravelersPopup() {
+            travelersPopup.classList.remove('active');
+        }
+
+        // Close popup when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!travelersPopup.contains(event.target) && !travelersInput.contains(event.target)) {
+                closeTravelersPopup();
+            }
+        });
+
+        // Prevent popup from closing when clicking inside it
+        travelersPopup.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
+        // Initialize button states
+        document.getElementById('adultsDecrement').disabled = counts.adults <= 1;
+        document.getElementById('childrenDecrement').disabled = counts.children <= 0;
+    </script>
+</body>
+</html>
