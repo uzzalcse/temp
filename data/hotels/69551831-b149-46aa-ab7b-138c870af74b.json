@@ -1,0 +1,42 @@
+{
+  "title": "A very nice hotel",
+  "description": "A beautiful beachfront resort with stunning ocean views",
+  "guestCount": 4,
+  "bedroomCount": 2,
+  "bathroomCount": 2,
+  "amenities": [
+    "wifi",
+    "pool",
+    "spa",
+    "beach access",
+    "room service"
+  ],
+  "host": {
+    "name": "John Smith",
+    "email": "john.smith@resort.com"
+  },
+  "address": "123 Ocean Drive, Miami Beach, FL 33139",
+  "location": {
+    "latitude": 25.7617,
+    "longitude": -80.1918
+  },
+  "rooms": [
+    {
+      "hotelSlug": "luxury-ocean-resort",
+      "roomSlug": "ocean-view-suite",
+      "roomImage": "",
+      "roomTitle": "Ocean View Suite",
+      "bedroomCount": 1
+    },
+    {
+      "hotelSlug": "luxury-ocean-resort",
+      "roomSlug": "presidential-suite",
+      "roomImage": "",
+      "roomTitle": "Presidential Suite",
+      "bedroomCount": 2
+    }
+  ],
+  "id": "69551831-b149-46aa-ab7b-138c870af74b",
+  "slug": "a-very-nice-hotel",
+  "images": []
+}
